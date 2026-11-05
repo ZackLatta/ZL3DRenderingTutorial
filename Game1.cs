@@ -9,6 +9,13 @@ public class Basic3DExampleGame : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
+    //triangle to draw
+    Triangle triangle;
+
+    Quad quad;
+
+    Cube cube;
+
     public Basic3DExampleGame()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -19,7 +26,9 @@ public class Basic3DExampleGame : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
-
+        triangle = new Triangle(this);
+        quad = new Quad(this);
+        cube = new Cube(this);
         base.Initialize();
     }
 
@@ -36,6 +45,8 @@ public class Basic3DExampleGame : Game
             Exit();
 
         // TODO: Add your update logic here
+        triangle.Update(gameTime);
+        cube.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -45,6 +56,9 @@ public class Basic3DExampleGame : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
+        triangle.Draw();
+        quad.Draw();
+        cube.Draw();
 
         base.Draw(gameTime);
     }
